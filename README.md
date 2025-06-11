@@ -1,4 +1,4 @@
-# BEZPIECZENSTWO
+BEZPIECZENSTWO
 Zmiana w ramach zajec Zabezpieczenie repozytorium i dodawanie uzytkownikow
 
 # 🟢 The Button

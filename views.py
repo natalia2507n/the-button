@@ -8,5 +8,5 @@ def home(request):
     return render(request, "index.html")
 
 
-def pooxadl():
+def pooxadl(device):
     return JsonResponse({"message": f"pong {time.time()}"})

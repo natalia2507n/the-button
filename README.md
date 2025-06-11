@@ -1,5 +1,5 @@
 BEZPIECZENSTWO
-Zmiana w ramach zajec Zabezpieczenie repozytorium i dodawanie uzytkownikow
+Zmiana w ramach zajec Zabezpieczenie repozytorium i dodawanie uzytkownikow. Cwiczenie
 
 # 🟢 The Button
 

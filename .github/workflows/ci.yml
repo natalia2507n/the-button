@@ -179,7 +179,7 @@ jobs:
           echo "Obraz Docker został otagowany wersją ${{ steps.versioning.outputs.new_tag }} i wypchnięty do Docker Hub"
 
   deploy-to-production:
-    needs: deploy-to-dev
+    needs: release
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -191,8 +191,13 @@ jobs:
           echo "Deploying to ${{ vars.ENVIRONMENT_NAME }} environment"
           echo "Using token: ${{ secrets.DEPLOY_TOKEN != '' && '***' || 'Not set' }}"
 
-      - name: Mock deployment
+      - name: Deploy to EC2
+        env:
+          IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/the-button
+          TAG: ${{ needs.release.outputs.tag }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+          ENV_NAME: production
         run: |
-          echo "Starting deployment to production environment..."
-          sleep 10
-          echo "Deployment to production environment completed!"
+          echo "Starting deployment of version $TAG to EC2..."
+          ./.github/scripts/deploy.sh $IMAGE_NAME $TAG $EC2_HOST $EC2_USER $ENV_NAME

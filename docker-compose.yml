@@ -1,9 +1,6 @@
 services:
   django-web:
-    image: $nginx:latest 
+    image: nginx:latest
     container_name: the_button_app
     ports:
-      - "8000:8000"
-    environment:
-      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
- 
+      - "8000:80"
